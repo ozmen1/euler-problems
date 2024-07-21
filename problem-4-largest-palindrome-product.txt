@@ -1,0 +1,31 @@
+function largestPalindromeProduct(n) {
+
+  var largest = 0;
+  var startStr = '1';
+  for(let i = 1; i < n; i++){
+    startStr += '0';
+  }
+  var endStr = startStr + '0'
+  var start = parseInt(startStr);
+  var end = parseInt(endStr) - 1;
+
+  for(let i = start; i <= end - 1; i++){
+    for(let j = start + 1; j <= end; j++){
+      var product = i * j;
+      if(isPalindrome(product.toString()) && product > largest){
+        largest = product;
+      }
+    }
+  }
+  return largest;
+}
+
+function isPalindrome(product){
+  let newProduct = product.split('').reverse().join('');
+  if(product === newProduct){
+    return true;
+  }
+  return false;
+}
+
+largestPalindromeProduct(3);

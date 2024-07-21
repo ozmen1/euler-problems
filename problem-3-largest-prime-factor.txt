@@ -1,0 +1,21 @@
+function largestPrimeFactor(number) 
+{
+  let n = 0;
+  let s = true
+  for(let i = 2; i < number; i++){
+        if (number % i == 0){
+            s = false
+            n = number / i
+            break;
+        }
+    } 
+        if (s == false){
+            return largestPrimeFactor(n)
+        }
+
+        else {
+            return number
+        }
+  }
+
+largestPrimeFactor(13195);
